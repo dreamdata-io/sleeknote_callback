@@ -11,7 +11,7 @@ function getEmail() {
                 email = String(campaign.b[1]).toLowerCase();
                 return;
             }
-         });
+        });
     }
 
     return email;
@@ -23,13 +23,15 @@ function sleeknote_identify() {
         if (!user || !user.id()) {
             var email = getEmail();
             if (email) {
-                analytics.identify(email, { email: email });
+                analytics.identify(email, {
+                    email: email
+                });
                 analytics.track("sleeknote_identify");
             }
         }
     }
 };
 
-analytics.ready(function() {
+analytics.ready(function () {
     sleeknote_identify();
 });
